@@ -1,24 +1,19 @@
-# Use a base image
-FROM node:20-alpine
+# Use a lightweight Node image with Bun pre-installed
+FROM oven/bun:latest
 
-# Set the working directory
 WORKDIR /app
 
-# Install bash, curl, and bun
-RUN apk add --no-cache bash curl \
-    && curl -fsSL https://bun.sh/install | bash
+# Copy only the package files to leverage Docker caching
+COPY bun.lockb package.json ./
 
-# Add bun to PATH
-ENV PATH="/root/.bun/bin:$PATH"
-
-# Copy package.json into the container
-COPY package.json ./
-
-# Install dependencies using bun
+# Install dependencies using Bun
 RUN bun install
 
-# Copy the rest of the application
-COPY . .
+# Copy the rest of the application code
+COPY . ./
 
-# Specify the default command
-CMD ["bun", "start"]
+# Expose the default development server port
+EXPOSE 3000
+
+# Start the development server
+CMD ["bun", "dev"]
