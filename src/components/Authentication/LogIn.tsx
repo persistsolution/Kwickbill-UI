@@ -15,7 +15,7 @@ const Login: FC<ComponentProps> = () => {
 
     const navigate = useNavigate();
 
-    const EMPLOYEE_API_URL = `${API_BASE_URL}/user/get`;
+    const EMPLOYEE_API_URL2 = `${API_BASE_URL}/user/get`;
     const OTP_API_URL = "https://api.pinnacle.in/index.php/sms/send/MHCHAI";
 
     const checkEmployeeExists = async (mobileNumber: string): Promise<boolean> => {
