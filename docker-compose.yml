@@ -9,7 +9,7 @@ services:
       - .:/app # Mount the current directory to /app in the container
       - /app/node_modules # Exclude node_modules for better performance
     ports:
-      - "3000:3000" # Map port 3000 of the container to port 3000 on the host
+      - "5173:5173" # Map port 3000 of the container to port 3000 on the host
     environment:
       - PATH=/root/.bun/bin:$PATH # Ensure bun is in the PATH
     command: ["bun", "start"] # Default command to run the app
