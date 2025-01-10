@@ -15,7 +15,7 @@ services:
     tty: true
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - NODE_ENV=production
+      - NODE_ENV=testing
 
 volumes:
   node_modules:
