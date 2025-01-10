@@ -1,19 +1,20 @@
 # Use a lightweight Node image with Bun pre-installed
 FROM oven/bun:latest
 
+# Set the working directory
 WORKDIR /app
 
-# Copy only the package files to leverage Docker caching
-COPY bun.lockb package.json ./
+# Copy only the package files to leverage Docker layer caching for dependencies
+COPY package.json bun.lockb ./
 
 # Install dependencies using Bun
-RUN bun install
+RUN bun install --no-cache
 
-# Copy the rest of the application code
-COPY . ./
+# Copy the rest of the application code into the container
+COPY . .
 
 # Expose the default development server port
 EXPOSE 5174
 
-# Start the development server
-CMD ["bun", "dev"]
+# Set the default command to start the development server
+CMD ["bun", "start"]
