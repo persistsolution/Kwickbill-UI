@@ -14,7 +14,7 @@ RUN bun install --no-cache
 COPY . .
 
 # Expose the default development server port
-EXPOSE 5174
+EXPOSE 5173
 
 # Set the default command to start the development server
 CMD ["bun", "start"]
